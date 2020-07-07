@@ -5,50 +5,51 @@ import (
 )
 
 var (
-	HangulCHO = []string{"ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"}
-	HangulJUN = []string{"ㅏ", "ㅐ", "ㅑ", "ㅒ", "ㅓ", "ㅔ", "ㅕ", "ㅖ", "ㅗ", "ㅘ", "ㅙ", "ㅚ", "ㅛ", "ㅜ", "ㅝ", "ㅞ", "ㅟ", "ㅠ", "ㅡ", "ㅢ", "ㅣ"}
-	HangulJON = []string{"", "ㄱ", "ㄲ", "ㄳ", "ㄴ", "ㄵ", "ㄶ", "ㄷ", "ㄹ", "ㄺ", "ㄻ", "ㄼ", "ㄽ", "ㄾ", "ㄿ", "ㅀ", "ㅁ", "ㅂ", "ㅄ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"}
+	hangulCHO = []string{"ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"}
+	hangulJUN = []string{"ㅏ", "ㅐ", "ㅑ", "ㅒ", "ㅓ", "ㅔ", "ㅕ", "ㅖ", "ㅗ", "ㅘ", "ㅙ", "ㅚ", "ㅛ", "ㅜ", "ㅝ", "ㅞ", "ㅟ", "ㅠ", "ㅡ", "ㅢ", "ㅣ"}
+	hangulJON = []string{"", "ㄱ", "ㄲ", "ㄳ", "ㄴ", "ㄵ", "ㄶ", "ㄷ", "ㄹ", "ㄺ", "ㄻ", "ㄼ", "ㄽ", "ㄾ", "ㄿ", "ㅀ", "ㅁ", "ㅂ", "ㅄ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"}
 )
 
 const (
 	// 한글의 시작은 '가' 끝은 '힣'
-	HangulBASE = rune('가')
-	HangulEND  = rune('힣')
+	hangulBASE = rune('가')
+	hangulEND  = rune('힣')
 
 	// 자음은 29개, 모음은 20개
-	HangulJA = rune('ㄱ')
-	HangulMO = rune('ㅏ')
+	hangulJA = rune('ㄱ')
+	hangulMO = rune('ㅏ')
 )
 
+// 분리/결합에 쓰이는 구조체
 type Hangul struct {
-	Word     string
-	Chosung  string
-	Jungsung string
-	Jongsung string
+	Word     string // 완성된 단어가 들어감
+	Chosung  string // 초성
+	Jungsung string // 중성
+	Jongsung string // 종성
 }
 
 // 한글의 초성, 중성, 종성을 추출하는 함수
 // input : string
-// output : []Hangul
+// output : []hangul
 func ExtractHangul(s string) []Hangul {
 	ret := []Hangul{}
 	for _, c := range []rune(s) {
 		item := Hangul{Word: string(c)}
-		if c >= HangulJA && c <= (HangulJA+29) {
+		if c >= hangulJA && c <= (hangulJA+29) {
 			// 자음 단독 입력
 			ret = append(ret, item)
-		} else if c >= HangulMO && c <= (HangulMO+20) {
+		} else if c >= hangulMO && c <= (hangulMO+20) {
 			// 모음 단독 입력
 			ret = append(ret, item)
-		} else if c >= HangulBASE && c <= HangulEND {
+		} else if c >= hangulBASE && c <= hangulEND {
 			// 이미 배열에 모든 문자열이 있기때문에 별도의 유니코드 계산이 불필요 '가'의 유니코드를 빼면 가의경우 0이 됨
-			temp := c - HangulBASE
+			temp := c - hangulBASE
 			cho := (temp / 588)
 			jung := (temp - (cho * 588)) / 28
-			item.Chosung = HangulCHO[cho]
-			item.Jungsung = HangulJUN[jung]
+			item.Chosung = hangulCHO[cho]
+			item.Jungsung = hangulJUN[jung]
 			if jong := temp % 28; jong != 0 {
-				item.Jongsung = HangulJON[jong]
+				item.Jongsung = hangulJON[jong]
 			}
 			ret = append(ret, item)
 		} else {
@@ -65,13 +66,13 @@ func ExtractHangul(s string) []Hangul {
 func IsHangul(s string) bool {
 	// 한글 판단 로직
 	for _, c := range []rune(s) {
-		if c >= HangulJA && c <= (HangulJA+29) {
+		if c >= hangulJA && c <= (hangulJA+29) {
 			// 자음 단독 입력
 			continue
-		} else if c >= HangulMO && c <= (HangulMO+20) {
+		} else if c >= hangulMO && c <= (hangulMO+20) {
 			// 모음 단독 입력
 			continue
-		} else if c >= HangulBASE && c <= HangulEND {
+		} else if c >= hangulBASE && c <= hangulEND {
 			// 일반 한글 입력
 			continue
 		} else {
@@ -90,9 +91,9 @@ func CombineHangul(word *Hangul) error {
 		// 한글은 3바이트 len에서도 3으로 출력됨
 		return errors.New("Invalid input value")
 	}
-	cho := findIndex(HangulCHO, word.Chosung)
-	jun := findIndex(HangulJUN, word.Jungsung)
-	jon := findIndex(HangulJON, word.Jongsung)
+	cho := findIndex(hangulCHO, word.Chosung)
+	jun := findIndex(hangulJUN, word.Jungsung)
+	jon := findIndex(hangulJON, word.Jongsung)
 
 	// 초, 중, 종성의 유효성 검사
 	if cho < 0 {
@@ -103,8 +104,8 @@ func CombineHangul(word *Hangul) error {
 		return errors.New("Jongsung isn't correct string")
 	}
 
-	// (588 * cho) + (28 * jun) + jon + HangulBASE
-	ret := (588 * rune(cho)) + (28 * rune(jun)) + rune(jon) + HangulBASE
+	// (588 * cho) + (28 * jun) + jon + hangulBASE
+	ret := (588 * rune(cho)) + (28 * rune(jun)) + rune(jon) + hangulBASE
 	word.Word = string(ret)
 
 	return nil
