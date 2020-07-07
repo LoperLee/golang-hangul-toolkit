@@ -6,6 +6,10 @@
 
 ## 사용방법
 
+```
+$ go get github.com/LoperLee/golang-hangul-toolkit
+```
+
 ## 예제
 
 ## 라이선스
