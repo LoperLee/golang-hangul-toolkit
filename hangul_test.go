@@ -24,11 +24,11 @@ func TestIsHangul(t *testing.T) {
 }
 
 func TestCombineHangul(t *testing.T) {
-	correct := &Hangul{Chosung: "ㅇ", Jungsung: "ㅏ", Jongsung: "ㄴ"}
-	error1 := &Hangul{Chosung: "ㅇ", Jungsung: "a"}
-	error2 := &Hangul{Chosung: "a"}
-	error3 := &Hangul{Chosung: "ㅇㅏ", Jungsung: "ㅏㅏ"}
-	error4 := &Hangul{Chosung: "안", Jungsung: "녕"}
+	correct := Hangul{Chosung: "ㅇ", Jungsung: "ㅏ", Jongsung: "ㄴ"}
+	error1 := Hangul{Chosung: "ㅇ", Jungsung: "a"}
+	error2 := Hangul{Chosung: "a"}
+	error3 := Hangul{Chosung: "ㅇㅏ", Jungsung: "ㅏㅏ"}
+	error4 := Hangul{Chosung: "안", Jungsung: "녕"}
 
 	// 정상동작
 	err := CombineHangul(correct)
