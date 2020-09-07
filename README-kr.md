@@ -1,9 +1,9 @@
 # Hangul-toolkit
-[Korean](https://github.com/LoperLee/golang-hangul-toolkit/blob/master/README-kr.md) | [English](https://github.com/LoperLee/golang-hangul-toolkit/blob/master/README.md)
+[한국어](https://github.com/LoperLee/golang-hangul-toolkit/blob/master/README-kr.md) | [영어](https://github.com/LoperLee/golang-hangul-toolkit/blob/master/README.md)
 
-This project is an open source project and can be used by anyone.
+이 프로젝트는 오픈소스 프로젝트로 누구나 이용할 수 있습니다.
 
-It provides the function of separating and combining the consonants of Hangul, and determining whether or not Hangul.
+한글의 자모음 분리와 조합, 한글여부를 판단해주는 기능을 제공합니다.
 
 ## 사용방법
 
