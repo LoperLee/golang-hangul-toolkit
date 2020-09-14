@@ -1,3 +1,3 @@
-module github.com/LoperLee/golang-hangul-toolkit
+module github.com/LoperLee/hangul
 
 go 1.13
