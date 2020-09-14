@@ -5,17 +5,17 @@ This project is an open source project and can be used by anyone.
 
 It provides the function of separating and combining the consonants of Hangul, and determining whether or not Hangul.
 
-## 사용방법
+## Install
 
 ```
 $ go get github.com/LoperLee/golang-hangul-toolkit
 ```
 
-## 문서
+## Document
 
 [Document](https://godoc.org/github.com/LoperLee/golang-hangul-toolkit)
 
-## 예제
+## Example
 
 ```
 package main
@@ -40,6 +40,6 @@ func main() {
 }
 ```
 
-## 라이선스
+## License
 
 [MIT License](https://github.com/LoperLee/golang-hangul-toolkit/blob/master/LICENSE)
