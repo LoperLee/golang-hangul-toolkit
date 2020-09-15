@@ -22,7 +22,7 @@ package main
 
 import (
 	"fmt"
-	hangul "github.com/LoperLee/golang-hangul-toolkit"
+	"github.com/LoperLee/golang-hangul-toolkit/hangul"
 )
 
 func main() {
