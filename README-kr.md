@@ -30,7 +30,7 @@ func main() {
 
 	han := hangul.ExtractHangul(s)
 	gul := hangul.Hangul{Chosung: "ㅇ", Jungsung: "ㅏ", Jongsung: "ㄴ"}
-	err := hangul.CombineHangul(gul)
+	err := hangul.CombineHangul(&gul)
 	if err != nil {
 		panic(err)
 	}

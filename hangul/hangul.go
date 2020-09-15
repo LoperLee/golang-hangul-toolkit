@@ -82,7 +82,7 @@ func IsHangul(s string) bool {
 	return true
 }
 
-func CombineHangul(word Hangul) error {
+func CombineHangul(word *Hangul) error {
 	// 몇가지 오류상황을 가정한다.
 	// 1. 초성이나 중성이 없을 경우
 	// 2. 초성이나 중성에 문자열이 1글자 이상일 경우
