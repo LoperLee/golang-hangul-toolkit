@@ -1,17 +1,17 @@
 # Hangul-toolkit
-[Korean](https://github.com/LoperLee/golang-hangul-toolkit/blob/master/README-kr.md) | [English](https://github.com/LoperLee/golang-hangul-toolkit/blob/master/README.md)
+[한국어](https://github.com/LoperLee/golang-hangul-toolkit/blob/master/README-kr.md) | [영어](https://github.com/LoperLee/golang-hangul-toolkit/blob/master/README.md)
 
-This project is an open source project and can be used by anyone.
+이 프로젝트는 오픈소스 프로젝트로 누구나 이용할 수 있습니다.
 
-It provides the functions of separating, combining, and attaching research to the elementary/middle/final of Hangul.
+한글의 초/중/종성 분리, 조합, 조사 붙히기 기능을 제공합니다.
 
-## Install
+## 사용방법
 
 ```
 $ go get github.com/LoperLee/golang-hangul-toolkit
 ```
 
-## Sample
+## 샘플
 
 ### Extract
 
@@ -64,14 +64,14 @@ fmt.Println(hangul.GetJosa("커피", hangul.EUN_NEUN))
 >> 커피를
 ```
 
-## Document
+## 문서
 
 [Document](https://godoc.org/github.com/LoperLee/golang-hangul-toolkit)
 
-## Example
+## 예제
 
 [Example](https://github.com/LoperLee/golang-hangul-toolkit/blob/master/example/main.go)
 
-## License
+## 라이선스
 
 [MIT License](https://github.com/LoperLee/golang-hangul-toolkit/blob/master/LICENSE)
