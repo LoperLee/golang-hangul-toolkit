@@ -31,25 +31,25 @@ func TestCombineHangul(t *testing.T) {
 	error4 := Hangul{Chosung: "안", Jungsung: "녕"}
 
 	// 정상동작
-	err := CombineHangul(correct)
+	err := CombineHangul(&correct)
 	if err != nil {
 		t.Error("Combine correct is wrong!")
 	}
 
 	// 의도적 오류 발생
-	err = CombineHangul(error1)
+	err = CombineHangul(&error1)
 	if err == nil {
 		t.Error("Combine error case 1 is wrong!")
 	}
-	err = CombineHangul(error2)
+	err = CombineHangul(&error2)
 	if err == nil {
 		t.Error("Combine error case 2 is wrong!")
 	}
-	err = CombineHangul(error3)
+	err = CombineHangul(&error3)
 	if err == nil {
 		t.Error("Combine error case 3 is wrong!")
 	}
-	err = CombineHangul(error4)
+	err = CombineHangul(&error4)
 	if err == nil {
 		t.Error("Combine error case 4 is wrong!")
 	}
