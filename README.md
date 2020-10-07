@@ -1,6 +1,4 @@
 # Hangul-toolkit
-[한국어](https://github.com/LoperLee/golang-hangul-toolkit/blob/master/README-kr.md) | [영어](https://github.com/LoperLee/golang-hangul-toolkit/blob/master/README.md)
-
 이 프로젝트는 오픈소스 프로젝트로 누구나 이용할 수 있습니다.
 
 한글의 초/중/종성 분리, 조합, 조사 붙히기 기능을 제공합니다.
